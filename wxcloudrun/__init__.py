@@ -2,6 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import pymysql
 import config
+from robot.robot import robot
+from werobot.contrib.flask import make_view
 
 # 因MySQLDB不支持Python3，使用pymysql扩展库代替MySQLDB库
 pymysql.install_as_MySQLdb()
@@ -22,3 +24,8 @@ from wxcloudrun import views
 
 # 加载配置
 app.config.from_object('config')
+
+app.add_url_rule(rule='/wx/api',        # WeRoBot 挂载地址
+                 endpoint='werobot',    # Flask 的 endpoint
+                 view_func=make_view(robot),
+                 methods=['GET', 'POST'])
