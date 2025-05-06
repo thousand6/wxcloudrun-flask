@@ -33,16 +33,12 @@ def make_view(robot):
     :return: 一个标准的 Flask view
     """
     def werobot_view():
-        timestamp = request.args.get('timestamp', '')
-        nonce = request.args.get('nonce', '')
-
+        if 'CheckContainerPath' in request.data:
+            return ''
         message = robot.parse_message(
-            request.data,
-            timestamp=timestamp,
-            nonce=nonce,
-            msg_signature=request.args.get('msg_signature', '')
+            request.data
         )
-        response = make_response(message)
+        response = make_response(robot.get_reply(message))
         response.headers['content_type'] = 'application/xml'
         return response
 

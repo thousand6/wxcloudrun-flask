@@ -562,14 +562,6 @@ class BaseRoBot(object):
         :return: WeRoBot Message
         """
         message_dict = parse_xml(body)
-        if "Encrypt" in message_dict:
-            xml = self.crypto.decrypt_message(
-                timestamp=timestamp,
-                nonce=nonce,
-                msg_signature=msg_signature,
-                encrypt_msg=message_dict["Encrypt"]
-            )
-            message_dict = parse_xml(xml)
         return process_message(message_dict)
 
     def get_reply(self, message):
