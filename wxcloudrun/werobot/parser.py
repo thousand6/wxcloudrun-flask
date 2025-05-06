@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import xmltodict
-from werobot.messages.messages import MessageMetaClass, UnknownMessage
-from werobot.messages.events import EventMetaClass, UnknownEvent
+from .messages.messages import MessageMetaClass, UnknownMessage
+from .messages.events import EventMetaClass, UnknownEvent
 
 
 def parse_user_msg(xml):
