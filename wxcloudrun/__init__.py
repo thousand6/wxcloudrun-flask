@@ -1,6 +1,6 @@
 from flask import Flask
 import config
-from robot.robot import robot
+from .robot.robot import robot
 from werobot.contrib.flask import make_view
 
 # 初始化web应用
