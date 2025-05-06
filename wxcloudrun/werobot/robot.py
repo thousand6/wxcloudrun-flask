@@ -109,8 +109,8 @@ class BaseRoBot(object):
         self.make_error_page = make_error_page
 
         if logger is None:
-            import werobot.logger
-            logger = werobot.logger.logger
+            import .logger
+            logger = .logger.logger
         self.logger = logger
 
         if config is None:
