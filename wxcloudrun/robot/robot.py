@@ -1,6 +1,6 @@
 import werobot
 
-robot = werobot.WeRoBot(token='jb9EQDxQ17zDiVaOj1iSedx6sgCLppV0')
+robot = werobot.WeRoBot()
 
 @robot.text
 def hello_world():
