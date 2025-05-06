@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from werobot.session import SessionStorage
-from werobot.utils import json_loads, json_dumps
+from session import SessionStorage
+from ..utils import json_loads, json_dumps
 import sqlite3
 
 __CREATE_TABLE_SQL__ = """
