@@ -1,7 +1,7 @@
 from flask import Flask
 import config
 from .robot.robot import robot
-from werobot.contrib.flask import make_view
+from .robot.flask import make_view
 
 # 初始化web应用
 app = Flask(__name__, instance_relative_config=True)
