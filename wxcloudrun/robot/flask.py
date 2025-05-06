@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request, make_response
+import xmltodict
 
 import html
 
@@ -33,7 +34,8 @@ def make_view(robot):
     :return: 一个标准的 Flask view
     """
     def werobot_view():
-        if 'CheckContainerPath' in request.data:
+        xml_dict = xmltodict.parse(request.data)["xml"]
+        if xml_dict['action'] and xml_dict['action'] == 'CheckContainerPath':
             return ''
         message = robot.parse_message(
             request.data
