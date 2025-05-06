@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from session import SessionStorage
+from . import SessionStorage
 from ..utils import json_loads, json_dumps
 import sqlite3
 
