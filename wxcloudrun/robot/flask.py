@@ -35,7 +35,7 @@ def make_view(robot):
     """
     def werobot_view():
         xml_dict = xmltodict.parse(request.data)["xml"]
-        if xml_dict['action'] and xml_dict['action'] == 'CheckContainerPath':
+        if xml_dict.get('action') and xml_dict.get('action') == 'CheckContainerPath':
             return ''
         message = robot.parse_message(
             request.data
