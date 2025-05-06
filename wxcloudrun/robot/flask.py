@@ -40,7 +40,7 @@ def make_view(robot):
         message = robot.parse_message(
             request.data
         )
-        response = make_response(robot.get_reply(message))
+        response = make_response(robot.get_encrypted_reply(message))
         response.headers['content_type'] = 'application/xml'
         return response
 
