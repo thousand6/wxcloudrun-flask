@@ -1,4 +1,4 @@
-from werobot.robot import WeRoBot
+from ..werobot.robot import WeRoBot
 
 robot = WeRoBot()
 
