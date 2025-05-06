@@ -35,6 +35,15 @@ def make_view(robot):
     def werobot_view():
         timestamp = request.args.get('timestamp', '')
         nonce = request.args.get('nonce', '')
+        signature = request.args.get('signature', '')
+        if not robot.check_signature(
+            timestamp,
+            nonce,
+            signature,
+        ):
+            return robot.make_error_page(html.escape(request.url)), 403
+        if request.method == 'GET':
+            return request.args['echostr']
 
         message = robot.parse_message(
             request.data,
@@ -42,7 +51,7 @@ def make_view(robot):
             nonce=nonce,
             msg_signature=request.args.get('msg_signature', '')
         )
-        response = make_response(message)
+        response = make_response(robot.get_encrypted_reply(message))
         response.headers['content_type'] = 'application/xml'
         return response
 

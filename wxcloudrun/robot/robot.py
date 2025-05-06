@@ -1,6 +1,6 @@
-import werobot
+from werobot.robot import WeRoBot
 
-robot = werobot.WeRoBot()
+robot = WeRoBot()
 
 @robot.text
 def hello_world():
