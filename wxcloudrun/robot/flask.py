@@ -33,6 +33,7 @@ def make_view(robot):
     :return: 一个标准的 Flask view
     """
     def werobot_view():
+        print(request)
         timestamp = request.args.get('timestamp', '')
         nonce = request.args.get('nonce', '')
         signature = request.args.get('signature', '')
