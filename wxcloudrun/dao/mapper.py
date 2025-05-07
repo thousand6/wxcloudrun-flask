@@ -2,7 +2,7 @@ import pymysql
 
 
 mysql_config = {
-    'host': '127.0.0.1',
+    'host': '10.12.109.184',
     'port': 3306,
     'user': 'root',
     'password': '123!@#qwe',
