@@ -18,5 +18,5 @@ sql = '''select name, finished, unfinished, assessment from employee_duties wher
 def get_content(number):
     cursor.execute(sql, (number))
     if result := cursor.fetchone():
-        return f"{result['name']}，你好，本月你已经完成的安全履职事项为：“{result['finished']}”。\n待完成事项为：“{result['unfinished']}”。\n截止目前，本月安全履职评价为：“{result['assessment']}”"
+        return f"{result['name']}，你好，本月你已经完成的安全履职事项为：“{result['finished']}”。\n待完成事项为：“{result['unfinished']}”。\n截止目前，本月安全履职评价为：“{result['assessment']}”。"
     return '未查找到履职信息，请检查员工编号'
