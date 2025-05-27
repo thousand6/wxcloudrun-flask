@@ -14,11 +14,13 @@ mysql_config = {
 
 cursor = pymysql.connect(**mysql_config).cursor()
 
-sql = '''select name, duties, tips, finished, unfinished, assessment from employee_duties where number=%s'''
+sql = '''select name, duties, key_points, finished, unfinished, assessment from employee_duties where number=%s'''
 
 def get_content(number):
     cursor.execute(sql, (number))
     if result := cursor.fetchone():
-        now = datetime.now().strftime("%m-%d")
-        return f"{result['name']}，你好，本月你应完成的安全履职事项为：\n“{result['duties']}”\n\n安全履职注意事项为：“{result['tips']}”\n\n截止到{now}，你已经完成的安全履职事项为：“{result['finished']}”\n\n待完成事项为：“{result['unfinished']}”\n\n截止目前，本月安全履职评价为：“{result['assessment']}”。"
+        date = datetime.now()
+        month = date.month
+        day = date.day
+        return f"{result['name']}，你好，本月你应完成的安全履职事项为：\n{result['duties']}\n\n安全履职注意事项为：\n{result['key_points']}\n\n截止到{month}月{day}日，你已经完成的安全履职事项为：\n{result['finished']}\n\n待完成事项为：\n{result['unfinished']}\n\n截止目前，本月安全履职评价为：“{result['assessment']}”。"
     return '未查找到履职信息，请检查员工编号'
