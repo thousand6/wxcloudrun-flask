@@ -9,12 +9,16 @@ from io import BytesIO
 robot = WeRoBot()
 
 @robot.text
-def hello_world(message):
+def get_duties(message):
     content = get_content(message.content)
     image_bytes = BytesIO()
     text_to_image(content, image_path=image_bytes)
     media_id = upload_image(image_bytes)
     return ImageReply(message, media_id=media_id)
+
+@robot.text
+def default_repley(message):
+    return '出错了，请稍后再试'
 
 
 
