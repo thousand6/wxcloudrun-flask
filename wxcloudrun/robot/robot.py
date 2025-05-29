@@ -13,15 +13,15 @@ robot = WeRoBot()
 @robot.text
 def get_duties(message):
     try:
-        content,success = get_content(message.content)
-        if success:
-            image_bytes = BytesIO()
-            text_to_image(content, image_path=image_bytes)
-            image_bytes.seek(0)
-            media_id = upload_image(image_bytes)
-            return ImageReply(message, media_id=media_id)
-            # return media_id
-        return content
+        return get_content(message.content)
+        # if success:
+        #     image_bytes = BytesIO()
+        #     text_to_image(content, image_path=image_bytes)
+        #     image_bytes.seek(0)
+        #     media_id = upload_image(image_bytes)
+        #     return ImageReply(message, media_id=media_id)
+        #     # return media_id
+        # return content
     except:
         logger.exception('')
         return '出错了，请稍后再试'
