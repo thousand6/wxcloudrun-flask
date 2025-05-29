@@ -6,6 +6,7 @@ import uuid
 import requests
 from io import BytesIO
 from loguru import logger
+import textwrap
 
 robot = WeRoBot()
 
