@@ -20,20 +20,21 @@ def hello_world(message):
 
 def text_to_image(text, font_path='SimSun.ttf', font_size=20, image_path='output.png'):
     # 创建字体对象
-    font = ImageFont.truetype(font_path, font_size)
+    # font = ImageFont.truetype(font_path, font_size)
     
-    # 计算文字的宽高
-    text_width, text_height = font.getsize(text)
+    # # 计算文字的宽高
+    # text_width, text_height = font.getsize(text)
     
-    # 创建白色背景的图像
-    image = Image.new('RGB', (text_width, text_height), 'white')
-    draw = ImageDraw.Draw(image)
+    # # 创建白色背景的图像
+    # image = Image.new('RGB', (text_width, text_height), 'white')
+    # draw = ImageDraw.Draw(image)
     
-    # 绘制黑色文字
-    draw.text((0, 0), text, font=font, fill='black')
+    # # 绘制黑色文字
+    # draw.text((0, 0), text, font=font, fill='black')
     
-    # 保存图像
-    image.save(image_path, format='PNG')
+    # # 保存图像
+    # image.save(image_path, format='PNG')
+    pass
 
 def upload_image(image):
     url = 'http://api.weixin.qq.com/cgi-bin/media/upload'
