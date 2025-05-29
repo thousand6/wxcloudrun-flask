@@ -16,6 +16,7 @@ def get_duties(message):
         if success:
             image_bytes = BytesIO()
             text_to_image(content, image_path=image_bytes)
+            image_bytes.seek(0)
             media_id = upload_image(image_bytes)
             # return ImageReply(message, media_id=media_id)
             return media_id
