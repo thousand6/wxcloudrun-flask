@@ -7,5 +7,5 @@ MarkupSafe==2.0.1
 Werkzeug==2.0.2
 xmltodict
 pymysql
-pillow=9.5
+pillow=9.5.0
 requests
