@@ -43,5 +43,5 @@ def upload_image(image):
     url = 'http://api.weixin.qq.com/cgi-bin/media/upload'
     files = {'media': (str(uuid.uuid4()) + '.png', image, 'image/png')}
     response = requests.post(url, params={'type':'image'}, files=files)
-    return response.json().get['media_id']
+    return response.json().get('media_id')
 
