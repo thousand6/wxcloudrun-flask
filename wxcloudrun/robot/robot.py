@@ -31,15 +31,25 @@ def text_to_image(text, font_path='Kaiti.ttf', font_size=20, image_path='output.
     #创建字体对象
     font = ImageFont.truetype(font_path, font_size)
     
-    # 计算文字的宽高
-    text_width, text_height = font.getsize(text)
-    
+    # 将文本分行
+    lines = []
+    for segment in text.split('\n'):
+        lines.extend(textwrap.wrap(segment, width=400 // font_size * 2))
+        lines.append('')
+    line_height = font.getsize('A')[1]
+
+    # 计算图像大小
+    image_height = (line_height + 10) * len(lines) + 20
+    image_width = max(font.getsize(line)[0] for line in lines) + 20
     # 创建白色背景的图像
-    image = Image.new('RGB', (text_width, text_height), 'white')
+    image = Image.new('RGB', (image_width, image_height), 'white')
     draw = ImageDraw.Draw(image)
-    
-    # 绘制黑色文字
-    draw.text((0, 0), text, font=font, fill='black')
+
+    # 绘制文本
+    y_offset = 5
+    for line in lines:
+        draw.text((10, y_offset), line, font=font, fill='black')
+        y_offset += line_height + 10
     
     # 保存图像
     image.save(image_path, format='PNG')
