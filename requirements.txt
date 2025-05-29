@@ -9,3 +9,4 @@ xmltodict
 pymysql
 Pillow<=9.5.0
 requests
+loguru

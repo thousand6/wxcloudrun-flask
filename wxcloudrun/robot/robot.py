@@ -5,21 +5,24 @@ from PIL import Image, ImageDraw, ImageFont
 import uuid 
 import requests
 from io import BytesIO
+from loguru import logger
 
 robot = WeRoBot()
 
 @robot.text
 def get_duties(message):
-    content = get_content(message.content)
-    image_bytes = BytesIO()
-    text_to_image(content, image_path=image_bytes)
-    media_id = upload_image(image_bytes)
-    # return ImageReply(message, media_id=media_id)
-    return media_id
-
-@robot.text
-def default_repley(message):
-    return '出错了，请稍后再试'
+    try:
+        content,success = get_content(message.content)
+        if success:
+            image_bytes = BytesIO()
+            text_to_image(content, image_path=image_bytes)
+            media_id = upload_image(image_bytes)
+            # return ImageReply(message, media_id=media_id)
+            return media_id
+        return content
+    except:
+        logger.exception('')
+        return '出错了，请稍后再试'
 
 
 
@@ -44,5 +47,5 @@ def upload_image(image):
     url = 'http://api.weixin.qq.com/cgi-bin/media/upload'
     files = {'media': (str(uuid.uuid4()) + '.png', image, 'image/png')}
     response = requests.post(url, params={'type':'image'}, files=files)
-    return response.json()
+    return response.text
 
