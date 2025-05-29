@@ -28,29 +28,29 @@ def get_duties(message):
 
 
 
-def text_to_image(text, font_path='msyh.ttf', font_size=30, image_path='output.png'):
+def text_to_image(text, image_path, font_path='msyh.ttf', font_size=40):
     #创建字体对象
     font = ImageFont.truetype(font_path, font_size)
     
     # 将文本分行
     lines = []
     for segment in text.split('\n'):
-        lines.extend(textwrap.wrap(segment, width=500 // font_size * 2))
+        lines.extend(textwrap.wrap(segment, width=400 // font_size * 2))
         lines.append('')
     line_height = font.getsize('A')[1]
 
     # 计算图像大小
-    image_height = (line_height + 10) * len(lines) + 20
-    image_width = max(font.getsize(line)[0] for line in lines) + 20
+    image_height = (line_height + 10) * len(lines) + 40
+    image_width = max(font.getsize(line)[0] for line in lines) + 40
     # 创建白色背景的图像
     image = Image.new('RGB', (image_width, image_height), 'white')
     draw = ImageDraw.Draw(image)
 
     # 绘制文本
-    y_offset = 5
+    y_offset = 20
     for line in lines:
-        draw.text((10, y_offset), line, font=font, fill='black')
-        y_offset += line_height + 10
+        draw.text((20, y_offset), line, font=font, fill='black')
+        y_offset += line_height + 5
     
     # 保存图像
     image.save(image_path, format='PNG')
