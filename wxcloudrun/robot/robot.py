@@ -28,14 +28,14 @@ def get_duties(message):
 
 
 
-def text_to_image(text, font_path='Kaiti.ttf', font_size=20, image_path='output.png'):
+def text_to_image(text, font_path='msyh.ttf', font_size=30, image_path='output.png'):
     #创建字体对象
     font = ImageFont.truetype(font_path, font_size)
     
     # 将文本分行
     lines = []
     for segment in text.split('\n'):
-        lines.extend(textwrap.wrap(segment, width=400 // font_size * 2))
+        lines.extend(textwrap.wrap(segment, width=500 // font_size * 2))
         lines.append('')
     line_height = font.getsize('A')[1]
 
