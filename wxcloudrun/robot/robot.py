@@ -14,7 +14,8 @@ def get_duties(message):
     image_bytes = BytesIO()
     text_to_image(content, image_path=image_bytes)
     media_id = upload_image(image_bytes)
-    return ImageReply(message, media_id=media_id)
+    # return ImageReply(message, media_id=media_id)
+    return media_id
 
 @robot.text
 def default_repley(message):
@@ -43,5 +44,5 @@ def upload_image(image):
     url = 'http://api.weixin.qq.com/cgi-bin/media/upload'
     files = {'media': (str(uuid.uuid4()) + '.png', image, 'image/png')}
     response = requests.post(url, params={'type':'image'}, files=files)
-    return response.json().get('media_id')
+    return response.json()
 
