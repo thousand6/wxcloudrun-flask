@@ -16,6 +16,10 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tencent.com/g' /etc/apk/repositorie
 && apk add --update --no-cache python3 py3-pip \
 && rm -rf /var/cache/apk/*
 
+RUN apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
+RUN apk add --no-cache jpeg-dev zlib-dev
+RUN apk del .tmp
+
 # 拷贝当前项目到/app目录下（.dockerignore中文件除外）
 COPY . /app
 
