@@ -14,7 +14,7 @@ def hello_world(message):
     image_bytes = BytesIO()
     text_to_image(content, image_path=image_bytes)
     media_id = upload_image(image_bytes)
-    return ImageReply(message)
+    return ImageReply(message, media_id=media_id)
 
 
 
