@@ -45,7 +45,7 @@ def text_to_image(text, font_path='Kaiti.ttf', font_size=20, image_path='output.
 
 def upload_image(image):
     url = 'http://api.weixin.qq.com/cgi-bin/media/upload'
-    files = {'media': (image)}
+    files = {'media': image}
     response = requests.post(url, params={'type':'image'}, files=files)
     return response.text
 
