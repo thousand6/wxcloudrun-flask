@@ -7,6 +7,4 @@ MarkupSafe==2.0.1
 Werkzeug==2.0.2
 xmltodict
 pymysql
-Pillow<=9.5.0
-requests
 loguru
