@@ -24,7 +24,7 @@ def get_duties(message):
         # return content
     except:
         logger.exception('')
-        return '出错了，请稍后再试'
+        return get_content(message.content)
 
 
 
