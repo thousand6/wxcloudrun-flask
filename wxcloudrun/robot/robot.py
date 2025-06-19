@@ -11,6 +11,6 @@ def get_duties(message):
         return get_content(message.content)
     except:
         logger.exception('')
-        time.sleep(1)
+        time.sleep(1.5)
         return get_content(message.content)
 
